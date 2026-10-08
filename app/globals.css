@@ -1,26 +1,61 @@
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary:#050608;
+  --bg-secondary:#0c0e12; 
+  --text-main:#f8fafc; 
+  --glass-border:rgba(255255, 255, 255, 0.08); 
+  --glass-bg:rgba(15, 23, 42, 0.45);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+body{
+  background-color: var(--bg-primary);
+  color:var(--text-main); 
+  font-family: system-ui, -apple-system, sans-serif; 
+  overflow-x:hidden; 
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.hero-gradient-bg{
+  position: absolute;
+  top: 50%; 
+  left:50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh; 
+  background: radial-gradient(circle at 50% 50%, rgba(79, 172, 254, 0.15) 0%, rgba(0, 242, 254, 0.05) 35%, transparent 70%);
+  filter:blur(80px);
+  pointer-events:none;
+  z-index: 1;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.spaced-headline{
+  letter-spacing: 0.45em;
+  text-indent:0.45em ;
+  font-weight: 800; 
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(79, 172, 254, 0.3);
+  transform: translateY(-2px);
+}
+
+.gpu-layer {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
